@@ -21,7 +21,8 @@ final class HomeView: UIView {
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubviews()
+        backgroundColor = .black
+        addSubview(tableView)
         setupConstraints()
     }
     
@@ -33,15 +34,6 @@ final class HomeView: UIView {
     func setDelegates(controller: HomeViewControlelr) {
         tableView.delegate = controller
         tableView.dataSource = controller
-    }
-    
-    // MARK: - Private methods
-    private func addSubviews() {
-        [
-            tableView
-        ].forEach {
-            addSubview($0)
-        }
     }
 }
 

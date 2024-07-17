@@ -21,8 +21,9 @@ final class HomeViewControlelr: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         homeView.setDelegates(controller: self)
-        view.backgroundColor = .black
         title = "Rick & Morty Characters"
+        navigationItem.backButtonDisplayMode = .minimal
+        navigationController?.navigationBar.tintColor = .white
     }
 
 
@@ -63,6 +64,9 @@ extension HomeViewControlelr: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let detailVC = DetailViewController()
+        // FIXME - датасорс изменить
+        detailVC.title = dataSource[indexPath.row].name
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
