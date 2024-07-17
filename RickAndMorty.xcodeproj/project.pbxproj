@@ -13,6 +13,14 @@
 		FA0AF2BB2C481C2B0049DD0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA0AF2BA2C481C2B0049DD0D /* Assets.xcassets */; };
 		FA0AF2BE2C481C2B0049DD0D /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FA0AF2BD2C481C2B0049DD0D /* Base */; };
 		FA0AF2CC2C48241E0049DD0D /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0AF2CB2C48241E0049DD0D /* Colors.swift */; };
+		FA0AF2D62C482A620049DD0D /* IBMPlexSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA0AF2CE2C482A610049DD0D /* IBMPlexSans-Bold.ttf */; };
+		FA0AF2D72C482A620049DD0D /* IBMPlexSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA0AF2CF2C482A610049DD0D /* IBMPlexSans-ExtraLight.ttf */; };
+		FA0AF2D82C482A620049DD0D /* IBMPlexSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA0AF2D02C482A610049DD0D /* IBMPlexSans-Regular.ttf */; };
+		FA0AF2D92C482A620049DD0D /* IBMPlexSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA0AF2D12C482A610049DD0D /* IBMPlexSans-Light.ttf */; };
+		FA0AF2DA2C482A620049DD0D /* IBMPlexSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA0AF2D22C482A610049DD0D /* IBMPlexSans-SemiBold.ttf */; };
+		FA0AF2DC2C482A620049DD0D /* IBMPlexSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA0AF2D42C482A610049DD0D /* IBMPlexSans-Medium.ttf */; };
+		FA0AF2DD2C482A620049DD0D /* IBMPlexSans-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA0AF2D52C482A620049DD0D /* IBMPlexSans-Thin.ttf */; };
+		FA0AF2DF2C482AF80049DD0D /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0AF2DE2C482AF80049DD0D /* Fonts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +32,14 @@
 		FA0AF2BD2C481C2B0049DD0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA0AF2BF2C481C2B0049DD0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA0AF2CB2C48241E0049DD0D /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		FA0AF2CE2C482A610049DD0D /* IBMPlexSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Bold.ttf"; sourceTree = "<group>"; };
+		FA0AF2CF2C482A610049DD0D /* IBMPlexSans-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-ExtraLight.ttf"; sourceTree = "<group>"; };
+		FA0AF2D02C482A610049DD0D /* IBMPlexSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Regular.ttf"; sourceTree = "<group>"; };
+		FA0AF2D12C482A610049DD0D /* IBMPlexSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Light.ttf"; sourceTree = "<group>"; };
+		FA0AF2D22C482A610049DD0D /* IBMPlexSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		FA0AF2D42C482A610049DD0D /* IBMPlexSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Medium.ttf"; sourceTree = "<group>"; };
+		FA0AF2D52C482A620049DD0D /* IBMPlexSans-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Thin.ttf"; sourceTree = "<group>"; };
+		FA0AF2DE2C482AF80049DD0D /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +85,7 @@
 		FA0AF2C52C481C8C0049DD0D /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				FA0AF2CD2C4827570049DD0D /* Fonts */,
 				FA0AF2BA2C481C2B0049DD0D /* Assets.xcassets */,
 				FA0AF2BC2C481C2B0049DD0D /* LaunchScreen.storyboard */,
 				FA0AF2BF2C481C2B0049DD0D /* Info.plist */,
@@ -111,8 +128,23 @@
 			isa = PBXGroup;
 			children = (
 				FA0AF2CB2C48241E0049DD0D /* Colors.swift */,
+				FA0AF2DE2C482AF80049DD0D /* Fonts.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		FA0AF2CD2C4827570049DD0D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FA0AF2CE2C482A610049DD0D /* IBMPlexSans-Bold.ttf */,
+				FA0AF2CF2C482A610049DD0D /* IBMPlexSans-ExtraLight.ttf */,
+				FA0AF2D12C482A610049DD0D /* IBMPlexSans-Light.ttf */,
+				FA0AF2D42C482A610049DD0D /* IBMPlexSans-Medium.ttf */,
+				FA0AF2D02C482A610049DD0D /* IBMPlexSans-Regular.ttf */,
+				FA0AF2D22C482A610049DD0D /* IBMPlexSans-SemiBold.ttf */,
+				FA0AF2D52C482A620049DD0D /* IBMPlexSans-Thin.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,8 +205,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA0AF2DD2C482A620049DD0D /* IBMPlexSans-Thin.ttf in Resources */,
+				FA0AF2D92C482A620049DD0D /* IBMPlexSans-Light.ttf in Resources */,
 				FA0AF2BB2C481C2B0049DD0D /* Assets.xcassets in Resources */,
+				FA0AF2DA2C482A620049DD0D /* IBMPlexSans-SemiBold.ttf in Resources */,
+				FA0AF2D72C482A620049DD0D /* IBMPlexSans-ExtraLight.ttf in Resources */,
+				FA0AF2D82C482A620049DD0D /* IBMPlexSans-Regular.ttf in Resources */,
+				FA0AF2DC2C482A620049DD0D /* IBMPlexSans-Medium.ttf in Resources */,
 				FA0AF2BE2C481C2B0049DD0D /* Base in Resources */,
+				FA0AF2D62C482A620049DD0D /* IBMPlexSans-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA0AF2B62C481C290049DD0D /* HomeScreen.swift in Sources */,
+				FA0AF2DF2C482AF80049DD0D /* Fonts.swift in Sources */,
 				FA0AF2CC2C48241E0049DD0D /* Colors.swift in Sources */,
 				FA0AF2B22C481C290049DD0D /* AppDelegate.swift in Sources */,
 				FA0AF2B42C481C290049DD0D /* SceneDelegate.swift in Sources */,
