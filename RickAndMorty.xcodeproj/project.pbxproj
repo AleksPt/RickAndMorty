@@ -80,8 +80,8 @@
 		FA0AF2B02C481C290049DD0D /* RickAndMorty */ = {
 			isa = PBXGroup;
 			children = (
-				FA0AF2E72C4859C10049DD0D /* Factories */,
 				FA0AF2C62C481CAC0049DD0D /* App */,
+				FA0AF2E72C4859C10049DD0D /* Factories */,
 				FA0AF2C92C481CC80049DD0D /* Model */,
 				FA0AF2C72C481CB50049DD0D /* Screens */,
 				FA0AF2C82C481CC10049DD0D /* Services */,
