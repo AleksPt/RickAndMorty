@@ -22,7 +22,8 @@ struct Character: Decodable {
     let species: String
     let gender: String
     let location: Location
-    let image: URL
+    // FIXME: Удалить опционал
+    let image: URL?
     // FIXME: Удалить опционал
     let episode: [URL]?
     // FIXME: Удалить свойство
@@ -41,7 +42,6 @@ struct Episode: Decodable {
 extension RickAndMorty {
     static func getMockData() -> [Character] {
         let location = Location(name: "Earth")
-        let fileExtension = "pdf"
         
         let result = [
             Character(
@@ -50,7 +50,7 @@ extension RickAndMorty {
                 species: "Human",
                 gender: "Male",
                 location: location,
-                image: Bundle.main.url(forResource: "mockImg1", withExtension: fileExtension)!,
+                image: nil,
                 episode: nil
             ),
             Character(
@@ -59,7 +59,7 @@ extension RickAndMorty {
                 species: "Human",
                 gender: "Female",
                 location: location,
-                image: Bundle.main.url(forResource: "mockImg2", withExtension: fileExtension)!,
+                image: nil,
                 episode: nil
             ),
             Character(
@@ -68,7 +68,7 @@ extension RickAndMorty {
                 species: "Sausage Fella",
                 gender: "Male",
                 location: location,
-                image: Bundle.main.url(forResource: "mockImg3", withExtension: fileExtension)!,
+                image: nil,
                 episode: nil
             ),
             Character(
@@ -77,7 +77,7 @@ extension RickAndMorty {
                 species: "Alien",
                 gender: "Male",
                 location: location,
-                image: Bundle.main.url(forResource: "mockImg4", withExtension: fileExtension)!,
+                image: nil,
                 episode: nil
             ),
             Character(
@@ -86,7 +86,7 @@ extension RickAndMorty {
                 species: "Animal",
                 gender: "Male",
                 location: location,
-                image: Bundle.main.url(forResource: "mockImg5", withExtension: fileExtension)!,
+                image: nil,
                 episode: nil
             ),
             Character(
@@ -95,7 +95,7 @@ extension RickAndMorty {
                 species: "Human",
                 gender: "Male",
                 location: location,
-                image: Bundle.main.url(forResource: "mockImg6", withExtension: fileExtension)!,
+                image: nil,
                 episode: nil
             ),
             Character(
@@ -104,7 +104,7 @@ extension RickAndMorty {
                 species: "Robot",
                 gender: "Male",
                 location: location,
-                image: Bundle.main.url(forResource: "mockImg7", withExtension: fileExtension)!,
+                image: nil,
                 episode: nil
             ),
         ]
