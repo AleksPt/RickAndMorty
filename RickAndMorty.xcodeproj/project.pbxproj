@@ -21,6 +21,7 @@
 		FA0AF2DC2C482A620049DD0D /* IBMPlexSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA0AF2D42C482A610049DD0D /* IBMPlexSans-Medium.ttf */; };
 		FA0AF2DD2C482A620049DD0D /* IBMPlexSans-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA0AF2D52C482A620049DD0D /* IBMPlexSans-Thin.ttf */; };
 		FA0AF2DF2C482AF80049DD0D /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0AF2DE2C482AF80049DD0D /* Fonts.swift */; };
+		FA0AF2E12C4839650049DD0D /* RickAndMortyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0AF2E02C4839650049DD0D /* RickAndMortyModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		FA0AF2D42C482A610049DD0D /* IBMPlexSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Medium.ttf"; sourceTree = "<group>"; };
 		FA0AF2D52C482A620049DD0D /* IBMPlexSans-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Thin.ttf"; sourceTree = "<group>"; };
 		FA0AF2DE2C482AF80049DD0D /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		FA0AF2E02C4839650049DD0D /* RickAndMortyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 		FA0AF2C92C481CC80049DD0D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FA0AF2E02C4839650049DD0D /* RickAndMortyModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA0AF2E12C4839650049DD0D /* RickAndMortyModel.swift in Sources */,
 				FA0AF2B62C481C290049DD0D /* HomeScreen.swift in Sources */,
 				FA0AF2DF2C482AF80049DD0D /* Fonts.swift in Sources */,
 				FA0AF2CC2C48241E0049DD0D /* Colors.swift in Sources */,
