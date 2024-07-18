@@ -9,6 +9,9 @@ import UIKit
 
 final class TableCell: UITableViewCell {
     
+    // MARK: - Private properties
+    private let networkManager = NetworkManager.shared
+    
     // MARK: - UI
     private lazy var background: UIView = {
         let element = UIView()
@@ -18,7 +21,7 @@ final class TableCell: UITableViewCell {
         return element
     }()
     
-    private lazy var avatar: UIImageView = {
+    lazy var avatar: UIImageView = {
         let element = UIImageView()
         element.translatesAutoresizingMaskIntoConstraints = false
         element.contentMode = .scaleAspectFill
@@ -86,14 +89,22 @@ final class TableCell: UITableViewCell {
     
     // MARK: - Public methods
     func configureCell(item: Character) {
-        // FIXME - получение картинки пофиксить
-        avatar.image = .mockImg6
         nameLabel.text = item.name
         subtitleLabel.attributedText = LabelFactory.makeColorAttributedString(
-            fullString: item.status + " • " + item.gender,
+            fullString: item.status + " • " + item.species,
             highlightedSubstring: item.status
         )
         genderLabel.text = item.gender
+        
+        networkManager.fetchImage(from: item.image) { [weak self] result in
+            guard let self else { return }
+            switch result {
+            case .success(let success):
+                avatar.image = UIImage(data: success)
+            case .failure(let failure):
+                print(failure)
+            }
+        }
     }
     
     // MARK: - Private methods
@@ -119,7 +130,7 @@ private extension TableCell {
             hStack.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: 15),
             hStack.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -18),
             
-            avatar.widthAnchor.constraint(equalTo: hStack.widthAnchor, multiplier: 0.2625),
+            avatar.widthAnchor.constraint(equalToConstant: 84),
         ])
     }
 }

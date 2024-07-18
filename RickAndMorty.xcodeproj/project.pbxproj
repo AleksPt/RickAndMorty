@@ -30,6 +30,7 @@
 		FA0AF2F02C4919AA0049DD0D /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0AF2EF2C4919AA0049DD0D /* Images.swift */; };
 		FA0AF2F22C491EEB0049DD0D /* ButtonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0AF2F12C491EEB0049DD0D /* ButtonFactory.swift */; };
 		FA0AF2F42C49244E0049DD0D /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0AF2F32C49244E0049DD0D /* NetworkMonitor.swift */; };
+		FA0AF2F62C492DD60049DD0D /* NetwokManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0AF2F52C492DD60049DD0D /* NetwokManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		FA0AF2EF2C4919AA0049DD0D /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		FA0AF2F12C491EEB0049DD0D /* ButtonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFactory.swift; sourceTree = "<group>"; };
 		FA0AF2F32C49244E0049DD0D /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		FA0AF2F52C492DD60049DD0D /* NetwokManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetwokManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				FA0AF2F32C49244E0049DD0D /* NetworkMonitor.swift */,
+				FA0AF2F52C492DD60049DD0D /* NetwokManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				FA0AF2E92C4859D20049DD0D /* LabelFactory.swift in Sources */,
 				FA0AF2B62C481C290049DD0D /* HomeViewControlelr.swift in Sources */,
 				FA0AF2DF2C482AF80049DD0D /* Fonts.swift in Sources */,
+				FA0AF2F62C492DD60049DD0D /* NetwokManager.swift in Sources */,
 				FA0AF2CC2C48241E0049DD0D /* Colors.swift in Sources */,
 				FA0AF2B22C481C290049DD0D /* AppDelegate.swift in Sources */,
 				FA0AF2B42C481C290049DD0D /* SceneDelegate.swift in Sources */,

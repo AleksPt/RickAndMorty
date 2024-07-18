@@ -17,7 +17,8 @@ final class DetailViewController: UIViewController {
     }
     
     // MARK: - Public methods
-    func configureSceen(item: Character) {
+    func configureSceen(item: Character?) {
+        guard let item else { return }
         title = item.name
         detailView.setupView(
             image: .mockImg6,

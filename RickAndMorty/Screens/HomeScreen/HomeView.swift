@@ -10,7 +10,7 @@ import UIKit
 final class HomeView: UIView {
     
     // MARK: - UI
-    private lazy var tableView: UITableView = {
+    lazy var tableView: UITableView = {
         let element = UITableView(frame: .zero)
         element.translatesAutoresizingMaskIntoConstraints = false
         element.register(TableCell.self, forCellReuseIdentifier: TableCell.description())
