@@ -7,7 +7,11 @@
 
 import UIKit
 
-final class HomeViewControlelr: UIViewController {
+protocol HomeViewControlelrDelegate: AnyObject {
+    func showNetworkError(isHidden: Bool)
+}
+
+final class HomeViewController: UIViewController {
     
     // MARK: - Private properties
     private let homeView = HomeView()
@@ -23,7 +27,8 @@ final class HomeViewControlelr: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         homeView.setDelegates(controller: self)
-        title = "Rick & Morty Characters"
+        homeView.retryButton.addTarget(self, action: #selector(didTapRetryButton), for: .touchUpInside)
+        networkManager.delegate = self
         navigationItem.backButtonDisplayMode = .minimal
         navigationController?.navigationBar.tintColor = .white
         fetchData(from: NetworkManager.APIEndpoint.baseURL.url)
@@ -42,10 +47,15 @@ final class HomeViewControlelr: UIViewController {
             }
         }
     }
+    
+    // MARK: - Actions
+    @objc private func didTapRetryButton() {
+        fetchData(from: NetworkManager.APIEndpoint.baseURL.url)
+    }
 }
 
 // MARK: - UITableViewDataSource
-extension HomeViewControlelr: UITableViewDataSource {
+extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         rickAndMorty?.results.count ?? 0
     }
@@ -66,7 +76,7 @@ extension HomeViewControlelr: UITableViewDataSource {
 }
 
 // MARK: - UITableViewDelegate
-extension HomeViewControlelr: UITableViewDelegate {
+extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         96
     }
@@ -83,5 +93,19 @@ extension HomeViewControlelr: UITableViewDelegate {
         let detailVC = DetailViewController()
         detailVC.configureSceen(item: rickAndMorty?.results[indexPath.row])
         navigationController?.pushViewController(detailVC, animated: true)
+    }
+}
+
+// MARK: - HomeViewControlelrDelegate
+extension HomeViewController: HomeViewControlelrDelegate {
+    func showNetworkError(isHidden: Bool = false) {
+        switch isHidden {
+        case false:
+            homeView.vStack.isHidden = false
+            title = ""
+        case true:
+            homeView.vStack.isHidden = true
+            title = "Rick & Morty Characters"
+        }
     }
 }

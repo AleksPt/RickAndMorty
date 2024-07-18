@@ -16,10 +16,19 @@ enum NetworkError: Error {
 final class NetworkManager {
     
     static let shared = NetworkManager()
+    private let networkMonitor = NetworkMonitor.shared
+    weak var delegate: HomeViewControlelrDelegate?
     
     private init() {}
     
     func fetch<T: Decodable>(_ type: T.Type, from url: URL?, with completion: @escaping(Result<T, NetworkError>) -> Void) {
+        guard networkMonitor.isConnected else {
+            delegate?.showNetworkError(isHidden: false)
+            return
+        }
+        
+        delegate?.showNetworkError(isHidden: true)
+        
         guard let url = url else {
             completion(.failure(.invalidURL))
             return
