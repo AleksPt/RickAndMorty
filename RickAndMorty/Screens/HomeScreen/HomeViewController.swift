@@ -91,7 +91,7 @@ extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
-        detailVC.configureSceen(item: rickAndMorty?.results[indexPath.row])
+        detailVC.configureScreen(item: rickAndMorty?.results[indexPath.row])
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }
