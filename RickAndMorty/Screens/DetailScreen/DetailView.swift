@@ -10,6 +10,21 @@ import UIKit
 final class DetailView: UIView {
     
     // MARK: - UI
+    private lazy var scrollView: UIScrollView = {
+        let element = UIScrollView()
+        element.translatesAutoresizingMaskIntoConstraints = false
+        element.contentInsetAdjustmentBehavior = .never
+        element.addSubview(scrollViewContent)
+        return element
+    }()
+    
+    private lazy var scrollViewContent: UIView = {
+        let element = UIView()
+        element.translatesAutoresizingMaskIntoConstraints = false
+        element.addSubview(background)
+        return element
+    }()
+    
     private lazy var background: UIView = {
         let element = UIView()
         element.layer.cornerRadius = 24
@@ -77,7 +92,7 @@ final class DetailView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .black
-        addSubview(background)
+        addSubview(scrollView)
         setupConstraints()
     }
     
@@ -131,6 +146,17 @@ final class DetailView: UIView {
 private extension DetailView {
     func setupConstraints() {
         NSLayoutConstraint.activate([
+            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20),
+            scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
+            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            
+            scrollViewContent.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            scrollViewContent.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            scrollViewContent.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            scrollViewContent.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            scrollViewContent.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            
             imageView.topAnchor.constraint(equalTo: background.topAnchor, constant: 16),
             imageView.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: 16),
             imageView.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -16),
@@ -147,13 +173,15 @@ private extension DetailView {
             vStack.leadingAnchor.constraint(equalTo: statusView.leadingAnchor),
             vStack.trailingAnchor.constraint(equalTo: statusView.trailingAnchor),
             
-            background.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
-            background.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            background.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            background.topAnchor.constraint(equalTo: scrollViewContent.topAnchor),
+            background.leadingAnchor.constraint(equalTo: scrollViewContent.leadingAnchor),
+            background.trailingAnchor.constraint(equalTo: scrollViewContent.trailingAnchor),
             background.bottomAnchor.constraint(equalTo: vStack.bottomAnchor, constant: 16),
             
             spinner.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
             spinner.centerYAnchor.constraint(equalTo: imageView.centerYAnchor),
+            
+            scrollViewContent.bottomAnchor.constraint(equalTo: background.bottomAnchor, constant: 50),
         ])
     }
 }
