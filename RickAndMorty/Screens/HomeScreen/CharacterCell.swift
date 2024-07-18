@@ -7,12 +7,14 @@
 
 import UIKit
 
-final class TableCell: UITableViewCell {
+final class CharacterCell: UITableViewCell {
     
     // MARK: - Private properties
     private let networkManager = NetworkManager.shared
     
     // MARK: - UI
+    private let spinner = SpinnerFactory.makeSpinner(style: .medium)
+    
     private lazy var background: UIView = {
         let element = UIView()
         element.layer.cornerRadius = 24
@@ -21,7 +23,7 @@ final class TableCell: UITableViewCell {
         return element
     }()
     
-    lazy var avatar: UIImageView = {
+    private lazy var avatar: UIImageView = {
         let element = UIImageView()
         element.translatesAutoresizingMaskIntoConstraints = false
         element.contentMode = .scaleAspectFill
@@ -71,6 +73,7 @@ final class TableCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCell()
+        addSubview(spinner)
         setupConstraints()
     }
     
@@ -101,6 +104,7 @@ final class TableCell: UITableViewCell {
             switch result {
             case .success(let success):
                 avatar.image = UIImage(data: success)
+                spinner.stopAnimating()
             case .failure(let failure):
                 print(failure)
             }
@@ -117,7 +121,7 @@ final class TableCell: UITableViewCell {
 }
 
 // MARK: - Setup Constraints
-private extension TableCell {
+private extension CharacterCell {
     func setupConstraints() {
         NSLayoutConstraint.activate([
             background.topAnchor.constraint(equalTo: topAnchor, constant: 2),
@@ -131,6 +135,9 @@ private extension TableCell {
             hStack.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -18),
             
             avatar.widthAnchor.constraint(equalToConstant: 84),
+            
+            spinner.centerXAnchor.constraint(equalTo: avatar.centerXAnchor),
+            spinner.centerYAnchor.constraint(equalTo: centerYAnchor),
         ])
     }
 }

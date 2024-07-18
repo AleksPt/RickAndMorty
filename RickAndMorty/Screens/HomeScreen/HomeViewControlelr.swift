@@ -55,9 +55,9 @@ extension HomeViewControlelr: UITableViewDataSource {
             return UITableViewCell()
         }
         guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: TableCell.description(),
+            withIdentifier: CharacterCell.description(),
             for: indexPath
-        ) as? TableCell else {
+        ) as? CharacterCell else {
             return UITableViewCell()
         }
         cell.configureCell(item: item)
