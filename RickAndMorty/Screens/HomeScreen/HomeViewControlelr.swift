@@ -9,9 +9,11 @@ import UIKit
 
 final class HomeViewControlelr: UIViewController {
     
+    // MARK: - Private properties
     private let homeView = HomeView()
-    // FIXME - датасорс изменить
-    private let dataSource: [Character] = RickAndMorty.getMockData()
+    private let networkManager = NetworkManager.shared
+    private var rickAndMorty: RickAndMorty?
+    private var character: Character?
 
     // MARK: - Life Cycle
     override func loadView() {
@@ -24,18 +26,34 @@ final class HomeViewControlelr: UIViewController {
         title = "Rick & Morty Characters"
         navigationItem.backButtonDisplayMode = .minimal
         navigationController?.navigationBar.tintColor = .white
+        fetchData(from: NetworkManager.APIEndpoint.baseURL.url)
+    }
+    
+    // MARK: - Private methods
+    private func fetchData(from url: URL?) {
+        networkManager.fetch(RickAndMorty.self, from: url) { [weak self] result in
+            guard let self else { return }
+            switch result {
+            case .success(let success):
+                rickAndMorty = success
+                homeView.tableView.reloadData()
+            case .failure(let failure):
+                print(failure)
+            }
+        }
     }
 }
 
 // MARK: - UITableViewDataSource
 extension HomeViewControlelr: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // FIXME - датасорс изменить
-        dataSource.count
+        rickAndMorty?.results.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = dataSource[indexPath.row]
+        guard let item = rickAndMorty?.results[indexPath.row] else {
+            return UITableViewCell()
+        }
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: TableCell.description(),
             for: indexPath
@@ -63,8 +81,7 @@ extension HomeViewControlelr: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
-        // FIXME - датасорс изменить
-        detailVC.configureSceen(item: dataSource[indexPath.row])
+        detailVC.configureSceen(item: rickAndMorty?.results[indexPath.row])
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }
