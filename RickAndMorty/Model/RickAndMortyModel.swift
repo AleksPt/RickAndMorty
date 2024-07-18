@@ -24,10 +24,6 @@ struct Character: Decodable {
     let location: Location
     let image: URL
     let episode: [URL]
-    // FIXME: Удалить свойство
-    var episodeString: String {
-        "Eart"
-    }
 }
 
 struct Location: Decodable {
