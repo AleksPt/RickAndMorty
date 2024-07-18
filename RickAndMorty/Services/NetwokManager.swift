@@ -79,13 +79,13 @@ final class NetworkManager {
 // MARK: - APIEndpoint
 extension NetworkManager {
     enum APIEndpoint {
-        case baseURL
+        case baseURL(page: Int)
         case search(name: String)
         
         var url: URL {
             switch self {
-            case .baseURL:
-                return URL(string: "https://rickandmortyapi.com/api/character")!
+            case .baseURL(let page):
+                return URL(string: "https://rickandmortyapi.com/api/character/?page=\(page)")!
             case .search(let name):
                 return URL(string: "https://rickandmortyapi.com/api/character/?name=\(name)")!
             }

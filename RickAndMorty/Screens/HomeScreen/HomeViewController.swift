@@ -12,12 +12,13 @@ protocol HomeViewControlelrDelegate: AnyObject {
 }
 
 final class HomeViewController: UIViewController {
+    private var isLoadingMoreData = false
+    private var currentPage = 1
     
     // MARK: - Private properties
     private let homeView = HomeView()
     private let networkManager = NetworkManager.shared
     private var rickAndMorty: RickAndMorty?
-    private var character: Character?
     private let searchController = UISearchController()
     private var filteredCharacter: [Character] = []
     private var searchBarIsEmpty: Bool {
@@ -44,17 +45,25 @@ final class HomeViewController: UIViewController {
             for: .touchUpInside
         )
         networkManager.delegate = self
-        fetchData(from: NetworkManager.APIEndpoint.baseURL.url)
+        fetchData(from: NetworkManager.APIEndpoint.baseURL(page: currentPage).url)
     }
     
     // MARK: - Private methods
     private func fetchData(from url: URL?) {
+        homeView.spinner.startAnimating()
+        isLoadingMoreData = true
         networkManager.fetch(RickAndMorty.self, from: url) { [weak self] result in
             guard let self else { return }
             switch result {
             case .success(let success):
-                rickAndMorty = success
+                if let _ = rickAndMorty?.results {
+                    rickAndMorty?.results += success.results
+                } else {
+                    rickAndMorty = success
+                }
                 homeView.tableView.reloadData()
+                isLoadingMoreData = false
+                homeView.spinner.stopAnimating()
             case .failure(let failure):
                 print(failure)
             }
@@ -102,7 +111,7 @@ final class HomeViewController: UIViewController {
     
     // MARK: - Actions
     @objc private func didTapRetryButton() {
-        fetchData(from: NetworkManager.APIEndpoint.baseURL.url)
+        fetchData(from: NetworkManager.APIEndpoint.baseURL(page: currentPage).url)
     }
 }
 
@@ -145,6 +154,25 @@ extension HomeViewController: UITableViewDelegate {
         detailVC.configureScreen(item: character)
         navigationController?.pushViewController(detailVC, animated: true)
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.size.height
+        
+        if offsetY > contentHeight - height {
+            if !isLoadingMoreData {
+                fetchData(
+                    from: NetworkManager.APIEndpoint.baseURL(
+                        page: currentPage + 1
+                    ).url
+                )
+                currentPage += 1
+            }
+        }
+    }
+
+
 }
 
 // MARK: - UISearchResultsUpdating
@@ -176,9 +204,11 @@ extension HomeViewController: HomeViewControlelrDelegate {
         switch isHidden {
         case false:
             homeView.vStack.isHidden = false
+            homeView.tableView.isHidden = true
             title = ""
         case true:
             homeView.vStack.isHidden = true
+            homeView.tableView.isHidden = false
             title = "Rick & Morty Characters"
         }
     }

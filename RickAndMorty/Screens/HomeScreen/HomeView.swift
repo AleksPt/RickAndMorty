@@ -10,6 +10,11 @@ import UIKit
 final class HomeView: UIView {
     
     // MARK: - UI
+    
+    let retryButton = ButtonFactory.makePrimaryButton(title: "Retry")
+    
+    let spinner = SpinnerFactory.makeSpinner()
+    
     lazy var tableView: UITableView = {
         let element = UITableView(frame: .zero)
         element.translatesAutoresizingMaskIntoConstraints = false
@@ -18,12 +23,18 @@ final class HomeView: UIView {
         return element
     }()
     
-    private lazy var errorNetwokImage: UIImageView = {
-        let element = UIImageView()
-        element.contentMode = .scaleAspectFit
-        element.clipsToBounds = true
-        element.image = Images.errorNetwork
+    lazy var vStack: UIStackView = {
+        let element = UIStackView()
         element.translatesAutoresizingMaskIntoConstraints = false
+        element.axis = .vertical
+        element.distribution = .fillProportionally
+        [
+            errorNetwokImage,
+            vStackWithButton
+        ].forEach {
+            element.addArrangedSubview($0)
+        }
+        element.isHidden = true
         return element
     }()
     
@@ -37,7 +48,14 @@ final class HomeView: UIView {
         numberOflines: 0
     )
     
-    let retryButton = ButtonFactory.makePrimaryButton(title: "Retry")
+    private lazy var errorNetwokImage: UIImageView = {
+        let element = UIImageView()
+        element.contentMode = .scaleAspectFit
+        element.clipsToBounds = true
+        element.image = Images.errorNetwork
+        element.translatesAutoresizingMaskIntoConstraints = false
+        return element
+    }()
     
     private lazy var vStackLabels: UIStackView = {
         let element = UIStackView()
@@ -67,27 +85,13 @@ final class HomeView: UIView {
         return element
     }()
     
-    lazy var vStack: UIStackView = {
-        let element = UIStackView()
-        element.translatesAutoresizingMaskIntoConstraints = false
-        element.axis = .vertical
-        element.distribution = .fillProportionally
-        [
-            errorNetwokImage,
-            vStackWithButton
-        ].forEach {
-            element.addArrangedSubview($0)
-        }
-        element.isHidden = true
-        return element
-    }()
-    
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .black
         addSubview(tableView)
         addSubview(vStack)
+        addSubview(spinner)
         setupConstraints()
     }
     
@@ -114,6 +118,9 @@ private extension HomeView {
             vStack.centerYAnchor.constraint(equalTo: centerYAnchor),
             vStack.centerXAnchor.constraint(equalTo: centerXAnchor),
             retryButton.heightAnchor.constraint(equalToConstant: 42),
+            
+            spinner.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 20),
+            spinner.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }
 }
