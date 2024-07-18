@@ -47,10 +47,19 @@ final class NetworkManager {
             guard let url else {
                 return
             }
+            
+            if let cachedImage = DataCache.shared.getData(forKey: url.absoluteString) {
+                DispatchQueue.main.async {
+                    completion(.success(cachedImage))
+                }
+                return
+            }
+            
             guard let imageData = try? Data(contentsOf: url) else {
                 completion(.failure(.noData))
                 return
             }
+            DataCache.shared.setData(imageData, forKey: url.absoluteString)
             DispatchQueue.main.async {
                 completion(.success(imageData))
             }
