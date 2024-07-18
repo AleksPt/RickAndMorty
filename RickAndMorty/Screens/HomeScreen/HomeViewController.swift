@@ -18,6 +18,15 @@ final class HomeViewController: UIViewController {
     private let networkManager = NetworkManager.shared
     private var rickAndMorty: RickAndMorty?
     private var character: Character?
+    private let searchController = UISearchController()
+    private var filteredCharacter: [Character] = []
+    private var searchBarIsEmpty: Bool {
+        guard let text = searchController.searchBar.text else { return false }
+        return text.isEmpty
+    }
+    private var isFiltering: Bool {
+        return searchController.isActive && !searchBarIsEmpty
+    }
 
     // MARK: - Life Cycle
     override func loadView() {
@@ -26,11 +35,15 @@ final class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationBar()
+        setupSearchController()
         homeView.setDelegates(controller: self)
-        homeView.retryButton.addTarget(self, action: #selector(didTapRetryButton), for: .touchUpInside)
+        homeView.retryButton.addTarget(
+            self,
+            action: #selector(didTapRetryButton),
+            for: .touchUpInside
+        )
         networkManager.delegate = self
-        navigationItem.backButtonDisplayMode = .minimal
-        navigationController?.navigationBar.tintColor = .white
         fetchData(from: NetworkManager.APIEndpoint.baseURL.url)
     }
     
@@ -48,6 +61,45 @@ final class HomeViewController: UIViewController {
         }
     }
     
+    private func searchData(query: String) {
+        networkManager.fetch(RickAndMorty.self, from: NetworkManager.APIEndpoint.search(name: query.lowercased()).url) { [weak self] result in
+            guard let self else { return }
+            switch result {
+            case .success(let success):
+                filteredCharacter = success.results
+                homeView.tableView.reloadData()
+            case .failure(let failure):
+                print(failure)
+            }
+        }
+    }
+    
+    private func setupSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+                
+        if let textField = searchController.searchBar.value(forKey: "searchField") as? UITextField {
+            textField.attributedPlaceholder = NSAttributedString(
+                string: "Search",
+                attributes: [.foregroundColor: UIColor.white]
+            )
+            
+            if let leftView = textField.leftView as? UIImageView {
+                leftView.image = leftView.image?.withRenderingMode(.alwaysTemplate)
+                leftView.tintColor = UIColor.white
+            }
+
+            textField.font = UIFont.TextFonts.NavigationBar.searchBarPlaceholder
+            textField.textColor = .white
+        }
+    }
+    
+    private func setupNavigationBar() {
+        navigationItem.searchController = searchController
+        navigationItem.backButtonDisplayMode = .minimal
+        navigationController?.navigationBar.tintColor = .white
+    }
+    
     // MARK: - Actions
     @objc private func didTapRetryButton() {
         fetchData(from: NetworkManager.APIEndpoint.baseURL.url)
@@ -57,20 +109,26 @@ final class HomeViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        rickAndMorty?.results.count ?? 0
+        isFiltering ? filteredCharacter.count : rickAndMorty?.results.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let item = rickAndMorty?.results[indexPath.row] else {
+
+        let character = isFiltering
+                    ? filteredCharacter[indexPath.row]
+                    : rickAndMorty?.results[indexPath.row]
+        
+        guard let character else {
             return UITableViewCell()
         }
+        
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: CharacterCell.description(),
             for: indexPath
         ) as? CharacterCell else {
             return UITableViewCell()
         }
-        cell.configureCell(item: item)
+        cell.configureCell(item: character)
         return cell
     }
 }
@@ -81,19 +139,35 @@ extension HomeViewController: UITableViewDelegate {
         96
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return UIView()
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        0
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let character = isFiltering ? filteredCharacter[indexPath.row] : rickAndMorty?.results[indexPath.row]
         let detailVC = DetailViewController()
-        detailVC.configureScreen(item: rickAndMorty?.results[indexPath.row])
+        detailVC.configureScreen(item: character)
         navigationController?.pushViewController(detailVC, animated: true)
     }
+}
+
+// MARK: - UISearchResultsUpdating
+extension HomeViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text ?? "")
+    }
+    
+    private func filterContentForSearchText(_ searchText: String) {
+        searchData(query: searchText)
+    }
+}
+
+// MARK: - UISearchBarDelegate
+extension HomeViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+            searchBar.placeholder = nil
+        }
+
+        func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+            searchBar.placeholder = "Search"
+        }
+
 }
 
 // MARK: - HomeViewControlelrDelegate
