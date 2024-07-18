@@ -9,7 +9,7 @@ import Foundation
 
 struct RickAndMorty: Decodable {
     let info: Info
-    let results: [Character]
+    var results: [Character]
 }
 
 struct Info: Decodable {

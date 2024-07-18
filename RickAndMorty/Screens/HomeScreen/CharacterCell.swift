@@ -98,7 +98,7 @@ final class CharacterCell: UITableViewCell {
             highlightedSubstring: item.status
         )
         genderLabel.text = item.gender
-        
+        spinner.startAnimating()
         networkManager.fetchImage(from: item.image) { [weak self] result in
             guard let self else { return }
             switch result {

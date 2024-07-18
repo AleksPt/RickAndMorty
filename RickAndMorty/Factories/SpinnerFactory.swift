@@ -13,7 +13,6 @@ final class SpinnerFactory {
         element.hidesWhenStopped = true
         element.color = .white
         element.translatesAutoresizingMaskIntoConstraints = false
-        element.startAnimating()
         return element
     }
 }
