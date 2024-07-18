@@ -16,6 +16,7 @@ enum NetworkError: Error {
 final class NetworkManager {
     
     static let shared = NetworkManager()
+    private let networkMonitor = NetworkMonitor.shared
     weak var delegate: HomeViewControlelrDelegate?
     
     private init() {}
