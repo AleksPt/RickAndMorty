@@ -16,7 +16,16 @@ final class DetailViewController: UIViewController {
         view = detailView
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    // MARK: - Public methods
+    func configureSceen(item: Character) {
+        title = item.name
+        detailView.setupView(
+            image: .mockImg6,
+            status: item.status,
+            species: item.species,
+            gender: item.gender,
+            episodes: item.episodeString,
+            location: item.location.name
+        )
     }
 }

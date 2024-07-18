@@ -66,7 +66,7 @@ extension HomeViewControlelr: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
         // FIXME - датасорс изменить
-        detailVC.title = dataSource[indexPath.row].name
+        detailVC.configureSceen(item: dataSource[indexPath.row])
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }

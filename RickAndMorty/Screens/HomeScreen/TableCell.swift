@@ -86,11 +86,13 @@ final class TableCell: UITableViewCell {
     
     // MARK: - Public methods
     func configureCell(item: Character) {
-        // FIXME - получение карьинки пофиксить
+        // FIXME - получение картинки пофиксить
         avatar.image = .mockImg6
         nameLabel.text = item.name
-        // FIXME - цвет статуса настроить
-        subtitleLabel.text = "\(item.status) • \(item.gender)"
+        subtitleLabel.attributedText = LabelFactory.makeColorAttributedString(
+            fullString: item.status + " • " + item.gender,
+            highlightedSubstring: item.status
+        )
         genderLabel.text = item.gender
     }
     
