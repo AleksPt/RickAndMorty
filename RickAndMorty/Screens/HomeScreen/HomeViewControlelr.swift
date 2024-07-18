@@ -25,8 +25,6 @@ final class HomeViewControlelr: UIViewController {
         navigationItem.backButtonDisplayMode = .minimal
         navigationController?.navigationBar.tintColor = .white
     }
-
-
 }
 
 // MARK: - UITableViewDataSource

@@ -27,6 +27,9 @@
 		FA0AF2E92C4859D20049DD0D /* LabelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0AF2E82C4859D20049DD0D /* LabelFactory.swift */; };
 		FA0AF2EB2C48715E0049DD0D /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0AF2EA2C48715E0049DD0D /* DetailView.swift */; };
 		FA0AF2ED2C4871680049DD0D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0AF2EC2C4871680049DD0D /* DetailViewController.swift */; };
+		FA0AF2F02C4919AA0049DD0D /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0AF2EF2C4919AA0049DD0D /* Images.swift */; };
+		FA0AF2F22C491EEB0049DD0D /* ButtonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0AF2F12C491EEB0049DD0D /* ButtonFactory.swift */; };
+		FA0AF2F42C49244E0049DD0D /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0AF2F32C49244E0049DD0D /* NetworkMonitor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +55,9 @@
 		FA0AF2E82C4859D20049DD0D /* LabelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFactory.swift; sourceTree = "<group>"; };
 		FA0AF2EA2C48715E0049DD0D /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		FA0AF2EC2C4871680049DD0D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		FA0AF2EF2C4919AA0049DD0D /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		FA0AF2F12C491EEB0049DD0D /* ButtonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFactory.swift; sourceTree = "<group>"; };
+		FA0AF2F32C49244E0049DD0D /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +133,7 @@
 		FA0AF2C82C481CC10049DD0D /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				FA0AF2F32C49244E0049DD0D /* NetworkMonitor.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -144,6 +151,7 @@
 			children = (
 				FA0AF2CB2C48241E0049DD0D /* Colors.swift */,
 				FA0AF2DE2C482AF80049DD0D /* Fonts.swift */,
+				FA0AF2EF2C4919AA0049DD0D /* Images.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -176,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				FA0AF2E82C4859D20049DD0D /* LabelFactory.swift */,
+				FA0AF2F12C491EEB0049DD0D /* ButtonFactory.swift */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -267,6 +276,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA0AF2ED2C4871680049DD0D /* DetailViewController.swift in Sources */,
+				FA0AF2F22C491EEB0049DD0D /* ButtonFactory.swift in Sources */,
+				FA0AF2F02C4919AA0049DD0D /* Images.swift in Sources */,
 				FA0AF2E12C4839650049DD0D /* RickAndMortyModel.swift in Sources */,
 				FA0AF2E42C4851400049DD0D /* HomeView.swift in Sources */,
 				FA0AF2E62C4851C20049DD0D /* TableCell.swift in Sources */,
@@ -277,6 +288,7 @@
 				FA0AF2CC2C48241E0049DD0D /* Colors.swift in Sources */,
 				FA0AF2B22C481C290049DD0D /* AppDelegate.swift in Sources */,
 				FA0AF2B42C481C290049DD0D /* SceneDelegate.swift in Sources */,
+				FA0AF2F42C49244E0049DD0D /* NetworkMonitor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
