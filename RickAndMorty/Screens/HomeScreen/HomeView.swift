@@ -37,7 +37,7 @@ final class HomeView: UIView {
         numberOflines: 0
     )
     
-    private let button = ButtonFactory.makePrimaryButton(title: "Retry")
+    let retryButton = ButtonFactory.makePrimaryButton(title: "Retry")
     
     private lazy var vStackLabels: UIStackView = {
         let element = UIStackView()
@@ -60,7 +60,7 @@ final class HomeView: UIView {
         element.distribution = .fillProportionally
         [
             vStackLabels,
-            button
+            retryButton
         ].forEach {
             element.addArrangedSubview($0)
         }
@@ -86,8 +86,8 @@ final class HomeView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .black
-        addSubview(vStack)
         addSubview(tableView)
+        addSubview(vStack)
         setupConstraints()
     }
     
@@ -96,7 +96,7 @@ final class HomeView: UIView {
     }
     
     // MARK: - Public properties
-    func setDelegates(controller: HomeViewControlelr) {
+    func setDelegates(controller: HomeViewController) {
         tableView.delegate = controller
         tableView.dataSource = controller
     }
@@ -113,7 +113,7 @@ private extension HomeView {
             
             vStack.centerYAnchor.constraint(equalTo: centerYAnchor),
             vStack.centerXAnchor.constraint(equalTo: centerXAnchor),
-            button.heightAnchor.constraint(equalToConstant: 42),
+            retryButton.heightAnchor.constraint(equalToConstant: 42),
         ])
     }
 }

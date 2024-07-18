@@ -17,9 +17,10 @@ final class LabelFactory {
     ) -> UILabel {
         let element = UILabel()
         element.numberOfLines = numberOflines
-        element.textColor = .white
+        element.textColor = color
         element.font = font
         element.text = text
+        element.textAlignment = alignment
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }
