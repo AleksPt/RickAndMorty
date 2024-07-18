@@ -107,6 +107,7 @@ final class HomeViewController: UIViewController {
         navigationItem.searchController = searchController
         navigationItem.backButtonDisplayMode = .minimal
         navigationController?.navigationBar.tintColor = .white
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     // MARK: - Actions
@@ -203,10 +204,14 @@ extension HomeViewController: HomeViewControlelrDelegate {
     func showNetworkError(isHidden: Bool = false) {
         switch isHidden {
         case false:
+            searchController.searchBar.isHidden = true
+            searchController.searchBar.searchTextField.resignFirstResponder()
+            homeView.spinner.stopAnimating()
             homeView.vStack.isHidden = false
             homeView.tableView.isHidden = true
             title = ""
         case true:
+            searchController.searchBar.isHidden = false
             homeView.vStack.isHidden = true
             homeView.tableView.isHidden = false
             title = "Rick & Morty Characters"
