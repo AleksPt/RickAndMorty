@@ -25,20 +25,23 @@ final class DetailView: UIView {
         return element
     }()
     
+    let spinner = SpinnerFactory.makeSpinner()
+    
     lazy var imageView: UIImageView = {
         let element = UIImageView()
         element.layer.cornerRadius = 12
         element.clipsToBounds = true
         element.contentMode = .scaleAspectFill
         element.translatesAutoresizingMaskIntoConstraints = false
+        element.addSubview(spinner)
         return element
     }()
     
-    lazy var statusView: UIView = {
+    private lazy var statusView: UIView = {
         let element = UIView()
         element.translatesAutoresizingMaskIntoConstraints = false
         element.layer.cornerRadius = 16
-        element.backgroundColor = UIColor.surfGreen
+        element.backgroundColor = .none
         element.addSubview(statusLabel)
         return element
     }()
@@ -90,15 +93,13 @@ final class DetailView: UIView {
     
     // MARK: - Public methods
     func setupView(
-        image: UIImage,
         status: String,
         species: String,
         gender: String,
         episodes: String,
         location: String
     ) {
-        imageView.image = image
-        statusLabel.text = status
+        statusLabel.text = status.capitalized
         speciesLabel.attributedText = LabelFactory.makeBoldAttributedString(
             fullString: "Species: " + species,
             highlightedSubstring: "Species:"
@@ -150,6 +151,9 @@ private extension DetailView {
             background.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             background.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             background.bottomAnchor.constraint(equalTo: vStack.bottomAnchor, constant: 16),
+            
+            spinner.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
+            spinner.centerYAnchor.constraint(equalTo: imageView.centerYAnchor),
         ])
     }
 }

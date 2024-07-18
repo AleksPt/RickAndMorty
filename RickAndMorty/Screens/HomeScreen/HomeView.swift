@@ -13,7 +13,7 @@ final class HomeView: UIView {
     lazy var tableView: UITableView = {
         let element = UITableView(frame: .zero)
         element.translatesAutoresizingMaskIntoConstraints = false
-        element.register(TableCell.self, forCellReuseIdentifier: TableCell.description())
+        element.register(CharacterCell.self, forCellReuseIdentifier: CharacterCell.description())
         element.backgroundColor = .none
         return element
     }()
@@ -27,23 +27,15 @@ final class HomeView: UIView {
         return element
     }()
     
-    private lazy var errorNetworkTitle: UILabel = {
-        let element = LabelFactory.makeLabel(font: UIFont.TextFonts.Error.Network.title)
-        element.text = "Network Error"
-        element.textAlignment = .center
-        return element
-    }()
+    private let errorNetworkTitle = LabelFactory.makeLabel(text: "Network Error", alignment: .center, font: UIFont.TextFonts.Error.Network.title)
     
-    private lazy var errorNetworkSubtitle: UILabel = {
-        let element = LabelFactory.makeLabel(
-            font: UIFont.TextFonts.Error.Network.subtitle,
-            numberOflines: 0
-        )
-        element.textColor = UIColor.surfErrorNetworkSubtitle
-        element.text = "There was an error connecting. \n Please check your internet."
-        element.textAlignment = .center
-        return element
-    }()
+    private let errorNetworkSubtitle = LabelFactory.makeLabel(
+        text: "There was an error connecting. \n Please check your internet.",
+        alignment: .center,
+        font: UIFont.TextFonts.Error.Network.subtitle,
+        color: UIColor.surfErrorNetworkSubtitle,
+        numberOflines: 0
+    )
     
     private let button = ButtonFactory.makePrimaryButton(title: "Retry")
     

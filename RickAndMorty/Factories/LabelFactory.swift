@@ -9,6 +9,8 @@ import UIKit
 
 final class LabelFactory {
     static func makeLabel(
+        text: String = "",
+        alignment: NSTextAlignment = .natural,
         font: UIFont,
         color: UIColor = .white,
         numberOflines: Int = 1
@@ -17,6 +19,7 @@ final class LabelFactory {
         element.numberOfLines = numberOflines
         element.textColor = .white
         element.font = font
+        element.text = text
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }
@@ -25,7 +28,7 @@ final class LabelFactory {
         fullString: String,
         highlightedSubstring: String
     ) -> NSMutableAttributedString {
-        let attributedString = NSMutableAttributedString(string: fullString)
+        let attributedString = NSMutableAttributedString(string: fullString.capitalized)
         
         let range = (fullString as NSString).range(of: highlightedSubstring)
         
