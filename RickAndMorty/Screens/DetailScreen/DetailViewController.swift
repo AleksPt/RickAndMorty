@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import TipKit
 
 final class DetailViewController: UIViewController {
     
@@ -15,6 +16,27 @@ final class DetailViewController: UIViewController {
     // MARK: - Life Cycle
     override func loadView() {
         view = detailView
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        Task { @MainActor in
+            for await shouldDisplay in EasterEggTip().shouldDisplayUpdates {
+                
+                if shouldDisplay {
+                    let popoverController = TipUIPopoverViewController(EasterEggTip(), sourceItem: detailView.imageView)
+                    present(popoverController, animated: true)
+                    EasterEggTip.hasViewedTip = false
+                }
+                
+            }
+            
+            if presentedViewController is TipUIPopoverViewController {
+                dismiss(animated: true)
+                
+            }
+        }
     }
     
     // MARK: - Public methods

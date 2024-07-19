@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import TipKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().standardAppearance = navBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
 
+        try? Tips.configure([
+              .displayFrequency(.immediate),
+              .datastoreLocation(.applicationDefault)])
+        
         return true
     }
 

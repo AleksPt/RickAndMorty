@@ -33,6 +33,7 @@
 		FA0AF2F62C492DD60049DD0D /* NetwokManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0AF2F52C492DD60049DD0D /* NetwokManager.swift */; };
 		FA0AF2F82C49509C0049DD0D /* SpinnerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0AF2F72C49509C0049DD0D /* SpinnerFactory.swift */; };
 		FA0AF2FC2C4957330049DD0D /* DataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0AF2FB2C4957330049DD0D /* DataCache.swift */; };
+		FA0AF3032C4A83FC0049DD0D /* EasterEggTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0AF3022C4A83FC0049DD0D /* EasterEggTip.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		FA0AF2F52C492DD60049DD0D /* NetwokManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetwokManager.swift; sourceTree = "<group>"; };
 		FA0AF2F72C49509C0049DD0D /* SpinnerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerFactory.swift; sourceTree = "<group>"; };
 		FA0AF2FB2C4957330049DD0D /* DataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCache.swift; sourceTree = "<group>"; };
+		FA0AF3022C4A83FC0049DD0D /* EasterEggTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterEggTip.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				FA0AF2E02C4839650049DD0D /* RickAndMortyModel.swift */,
+				FA0AF3022C4A83FC0049DD0D /* EasterEggTip.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				FA0AF2E12C4839650049DD0D /* RickAndMortyModel.swift in Sources */,
 				FA0AF2E42C4851400049DD0D /* HomeView.swift in Sources */,
 				FA0AF2E62C4851C20049DD0D /* CharacterCell.swift in Sources */,
+				FA0AF3032C4A83FC0049DD0D /* EasterEggTip.swift in Sources */,
 				FA0AF2F82C49509C0049DD0D /* SpinnerFactory.swift in Sources */,
 				FA0AF2EB2C48715E0049DD0D /* DetailView.swift in Sources */,
 				FA0AF2E92C4859D20049DD0D /* LabelFactory.swift in Sources */,
