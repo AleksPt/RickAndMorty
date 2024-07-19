@@ -1,7 +1,7 @@
 # Rick and Morty
 
 ## 📺 Демо:
-[![Демонстрация приложения](https://github.com/AleksPt/RickAndMorty/blob/main/Media/demo.png)](https://youtu.be/f6r7wyhlkjk)
+[![Демонстрация приложения](https://github.com/AleksPt/RickAndMorty/blob/main/Media/demo.png)](https://youtu.be/Lof3Mfi8sB4)
 <p align="left"> 
 <a href="https://www.swift.org">
 <img src="https://img.shields.io/badge/Swift - 50B498"/></a>
@@ -30,6 +30,7 @@
   + UITableView
   + UIScrollView
   + UISearchController
+  + UIActivityIndicator
 - URLSession
 - NetworkMonitor
 - NSCache
